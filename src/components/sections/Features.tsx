@@ -26,7 +26,7 @@ const Features: React.FC<FeaturesProps> = ({
   };
 
   return (
-    <Section background="light" size="lg" id="features">
+    <Section background="white" size="lg" id="features">
       <Container>
         {title && (
           <div className="text-center mb-12">

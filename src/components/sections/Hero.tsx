@@ -22,16 +22,15 @@ const Hero: React.FC<HeroProps> = ({
       className={`relative w-full min-h-screen flex items-center justify-center overflow-hidden ${
         backgroundGradient ? "bg-gradient-hero" : ""
       }`}
-      style={
-        backgroundImage
-          ? {
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }
-          : {}
-      }
     >
+      {backgroundImage && (
+        <img
+          src={backgroundImage}
+          alt="SOCMACS students"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+
       {/* Overlay for better text readability - premium dark overlay */}
       {backgroundImage && (
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50" />

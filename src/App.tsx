@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   NavBar,
   Hero,
@@ -11,6 +11,30 @@ import {
 } from "./components/sections";
 
 const App: React.FC = () => {
+  const logoImage = `${import.meta.env.BASE_URL}logo.jpg`;
+  const heroImage = `${import.meta.env.BASE_URL}hero.jpg`;
+
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+
+    const savedTheme = window.localStorage.getItem("socmacs-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      return savedTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("socmacs-theme", theme);
+  }, [theme]);
+
   const navLinks = [
     { label: "Features", href: "#features" },
     { label: "Team", href: "#team" },
@@ -160,14 +184,26 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
-      <NavBar logo="/logo.jpg" logoText="SOCMACS" links={navLinks} />
+    <div
+      className={`min-h-screen ${theme === "dark" ? "theme-dark" : "theme-light"} bg-gradient-sunlit dark:bg-gray-950`}
+    >
+      <NavBar
+        logo={logoImage}
+        logoText="SOCMACS"
+        links={navLinks}
+        theme={theme}
+        onToggleTheme={() =>
+          setTheme((currentTheme) =>
+            currentTheme === "light" ? "dark" : "light",
+          )
+        }
+      />
 
       <Hero
         headline="Shaping Future Leaders"
         subheadline="Excellence in Education, And Opportunity"
         ctaText="Explore More"
-        backgroundImage="/hero.png"
+        backgroundImage={heroImage}
         backgroundGradient={false}
       />
 

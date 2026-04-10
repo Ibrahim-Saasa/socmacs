@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -69,7 +70,9 @@ export default {
         "gradient-hero": "linear-gradient(135deg, #001f3f 0%, #440055 100%)",
         "gradient-gold": "linear-gradient(135deg, #FFD700 0%, #e6c200 100%)",
         "gradient-light":
-          "linear-gradient(135deg, rgba(0, 31, 63, 0.05) 0%, rgba(68, 0, 85, 0.05) 100%)",
+          "linear-gradient(135deg, #fffdf2 0%, #fff7cc 42%, #ffeaa0 100%)",
+        "gradient-sunlit":
+          "radial-gradient(circle at top left, rgba(255, 248, 196, 0.95) 0%, rgba(255, 243, 176, 0.72) 22%, rgba(255, 255, 255, 0) 45%), linear-gradient(135deg, #fffef6 0%, #fff8d8 48%, #ffe79a 100%)",
       },
     },
   },

@@ -16,8 +16,8 @@ const Section: React.FC<SectionProps> = ({
   ...props
 }) => {
   const backgroundClasses = {
-    white: "bg-white dark:bg-gray-950",
-    light: "bg-gray-50 dark:bg-gray-900",
+    white: "bg-transparent dark:bg-gray-950",
+    light: "bg-gradient-sunlit dark:bg-gray-900",
     dark: "bg-gray-900 dark:bg-gray-950 text-white",
     gradient: "bg-gradient-light dark:bg-gray-900/50",
     hero: "bg-gradient-hero text-white",

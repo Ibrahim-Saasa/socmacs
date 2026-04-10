@@ -23,7 +23,7 @@ const Events: React.FC<EventsProps> = ({ title, events, columns = 3 }) => {
   };
 
   return (
-    <Section background="light" size="lg" id="events">
+    <Section background="white" size="lg" id="events">
       <Container>
         {title && (
           <div className="text-center mb-12">
